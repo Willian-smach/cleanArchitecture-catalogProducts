@@ -1,0 +1,22 @@
+{
+  "name": "ca-wine-catalog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc && jest ./dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.15.11",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.0.5",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "uuidv4": "^6.2.13"
+  }
+}

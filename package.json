@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tsc && jest ./dist"
+    "test": "tsc && jest ./dist",
+    "express": "tsc && nodemon ./dist/src/infra/http/express.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,8 @@
     "typescript": "^5.0.2"
   },
   "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
     "uuidv4": "^6.2.13"
   }
 }

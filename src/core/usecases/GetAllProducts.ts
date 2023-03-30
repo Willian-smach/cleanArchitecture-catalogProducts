@@ -8,7 +8,12 @@ class GetAllProducts {
     }
 
     async exec() {
-        return await this.productRepo.findAll();
+        const products = await this.productRepo.findAll();
+        if(products != ''){
+            return products;
+        }else{
+            return ({msg: 'Nothing'});
+        }
     }
 }
 

@@ -5,8 +5,13 @@ import mongoose from "mongoose";
 
 const app = new Express();
 const PORT = 3000;
+app.use(Express.json());
 
 app.get("/products", ExpressAdapter.create(ProductController.getAllProducts));
+/*app.post("/product", async (req, res) => {
+    const { productName } = req.body;
+    console.log(productName);
+})*/
 app.post("/product", ExpressAdapter.create(ProductController.registerProducts));
 
 

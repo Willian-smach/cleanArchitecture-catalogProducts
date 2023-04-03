@@ -1,12 +1,13 @@
-import Express from "express";
-import ExpressAdapter from "../../controller/ExpressAdapter";
+import express from "express";
+import ExpressAdapter from "../../adapter/ExpressAdapter";
 import { ProductController } from "../../controller/ProductController";
 import mongoose from "mongoose";
 
-const app = new Express();
+const app = express();
 const PORT = 3000;
-app.use(Express.json());
+app.use(express.json());
 
+app.get("/product/:id", ExpressAdapter.create(ProductController.getProduct));
 app.get("/products", ExpressAdapter.create(ProductController.getAllProducts));
 /*app.post("/product", async (req, res) => {
     const { productName } = req.body;

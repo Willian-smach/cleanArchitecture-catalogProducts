@@ -1,3 +1,4 @@
+import { AdapterProduct } from "../../adapter/AdapterProduct";
 import { AdapterProductMongoose } from "../../adapter/AdapterProductMongoose";
 import { Product } from "../../core/entities/Product";
 import { ProductRepository } from "../../core/interfaces/ProductRepository";
@@ -5,20 +6,26 @@ import { ProductMongo } from "../../models/ProductMongo";
 
 class ProductRepositoryMongo implements ProductRepository {
     async register(product: Product): Promise<boolean> {
-        const Product = new ProductMongo({
+        const productRegister = new ProductMongo({
             id: product.id,
             productName: product.productName,
             description: product.description,
             value: product.value
         });
 
-        await Product.save();
+        await productRegister.save();
 
-        return !!Product;
+        return !!productRegister;
     }
-    find(id: string): Promise<Product> {
-        throw new Error("Method not implemented.");
+    async find(id: string): Promise<Product> {
+        return await ProductMongo.findById(id);
     }
+
+    async findByName(productName: string): Promise<boolean> {
+        const product = await ProductMongo.findOne({productName: productName});
+        return !!product;
+    }
+
     async findAll(): Promise<any> {
         //const ProductMongo = AdapterProductMongoose.adapter();
         const products = await ProductMongo.find();

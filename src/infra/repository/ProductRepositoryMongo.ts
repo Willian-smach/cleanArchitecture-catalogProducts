@@ -18,7 +18,7 @@ class ProductRepositoryMongo implements ProductRepository {
         return !!productRegister;
     }
     async find(id: string): Promise<Product> {
-        return await ProductMongo.findById(id);
+        return await ProductMongo.findOne({id: id});
     }
 
     async findByName(productName: string): Promise<boolean> {

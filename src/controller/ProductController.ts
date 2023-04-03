@@ -24,7 +24,8 @@ class ProductController {
     static async getProduct(params, body) {
         const productRepositoryMongo = new ProductRepositoryMongo();
         const getProduct = new GetProduct(productRepositoryMongo);
-        const product = getProduct.exec(params.id);
+        //console.log(params);
+        const product = await getProduct.exec(params.id);
         return product;
     }
 }

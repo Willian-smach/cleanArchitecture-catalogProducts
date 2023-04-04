@@ -44,11 +44,12 @@ class ProductRepositoryMongo implements ProductRepository {
             value: product.value
         };
         const update = await ProductMongo.findOneAndUpdate(filter, updates);
-        
+
         return !!update;
     }
-    delete(id: string): Promise<boolean> {
-        throw new Error("Method not implemented.");
+    async delete(id: string): Promise<boolean> {
+        const deleteProduct = await ProductMongo.deleteOne({id: id});
+        return !!deleteProduct;
     }
     
 }

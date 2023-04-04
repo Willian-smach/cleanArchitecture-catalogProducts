@@ -11,6 +11,7 @@ app.get("/product/:id", ExpressAdapter.create(ProductController.getProduct));
 app.get("/products", ExpressAdapter.create(ProductController.getAllProducts));
 app.post("/product", ExpressAdapter.create(ProductController.registerProducts));
 app.patch("/product/:id", ExpressAdapter.create(ProductController.updateProduct));
+app.delete("/product/:id", ExpressAdapter.create(ProductController.deleteProduct));
 
 
 mongoose.set('strictQuery', false)

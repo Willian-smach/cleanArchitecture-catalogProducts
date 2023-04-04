@@ -5,6 +5,7 @@ import { GetAllProducts } from "../core/usecases/GetAllProducts";
 import RegisterNewProduct from "../core/usecases/RegisterNewProduct";
 import { ProductRepositoryMongo } from "../infra/repository/ProductRepositoryMongo";
 import { UpdateProduct } from "../core/usecases/UpdateProduct";
+import { DeleteProduct } from "../core/usecases/DeleteProduct";
 
 class ProductController {
     static async getAllProducts(params, body) {
@@ -36,6 +37,14 @@ class ProductController {
         const product = AdapterProduct.create(body.productName, body.description, body.value, params.id);
         const confirm = await updateProduct.exec(product);
         return confirm;
+    }
+
+    static async deleteProduct(params, body) {
+        const productRepositoryMongo = new ProductRepositoryMongo();
+        const deleteProduct = new DeleteProduct(productRepositoryMongo);
+        const confirm = await deleteProduct.exec(params.id);
+        return confirm;
+
     }
 }
 

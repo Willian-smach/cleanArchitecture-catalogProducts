@@ -1,3 +1,4 @@
 /node_modules
 /dist
 /docker
+run_mongo.txt

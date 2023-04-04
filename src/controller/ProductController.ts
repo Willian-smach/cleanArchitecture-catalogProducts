@@ -1,9 +1,10 @@
 import { uuid } from "uuidv4";
 import { AdapterProduct } from "../adapter/AdapterProduct";
-import { GetProduct } from "../core/usecases/DTO/GetProduct";
+import { GetProduct } from "../core/usecases/GetProduct";
 import { GetAllProducts } from "../core/usecases/GetAllProducts";
 import RegisterNewProduct from "../core/usecases/RegisterNewProduct";
 import { ProductRepositoryMongo } from "../infra/repository/ProductRepositoryMongo";
+import { UpdateProduct } from "../core/usecases/UpdateProduct";
 
 class ProductController {
     static async getAllProducts(params, body) {
@@ -27,6 +28,14 @@ class ProductController {
         //console.log(params);
         const product = await getProduct.exec(params.id);
         return product;
+    }
+
+    static async updateProduct(params, body) {
+        const productRepositoryMongo = new ProductRepositoryMongo();
+        const updateProduct = new UpdateProduct(productRepositoryMongo);
+        const product = AdapterProduct.create(body.productName, body.description, body.value, params.id);
+        const confirm = await updateProduct.exec(product);
+        return confirm;
     }
 }
 

@@ -9,11 +9,8 @@ app.use(express.json());
 
 app.get("/product/:id", ExpressAdapter.create(ProductController.getProduct));
 app.get("/products", ExpressAdapter.create(ProductController.getAllProducts));
-/*app.post("/product", async (req, res) => {
-    const { productName } = req.body;
-    console.log(productName);
-})*/
 app.post("/product", ExpressAdapter.create(ProductController.registerProducts));
+app.patch("/product/:id", ExpressAdapter.create(ProductController.updateProduct));
 
 
 mongoose.set('strictQuery', false)

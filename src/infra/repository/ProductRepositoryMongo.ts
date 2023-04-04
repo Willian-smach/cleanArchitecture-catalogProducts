@@ -36,8 +36,16 @@ class ProductRepositoryMongo implements ProductRepository {
         const products = await ProductMongo.find();
         return products;
     }
-    update(product: Product): Promise<boolean> {
-        throw new Error("Method not implemented.");
+    async update(product: Product): Promise<boolean> {
+        const filter = {id: product.id};
+        const updates = {
+            productName: product.productName,
+            description: product.description,
+            value: product.value
+        };
+        const update = await ProductMongo.findOneAndUpdate(filter, updates);
+        
+        return !!update;
     }
     delete(id: string): Promise<boolean> {
         throw new Error("Method not implemented.");

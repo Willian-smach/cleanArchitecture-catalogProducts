@@ -1,4 +1,4 @@
-import { ProductRepository } from "../../interfaces/ProductRepository";
+import { ProductRepository } from "../interfaces/ProductRepository";
 
 export class GetProduct {
     productRepo: ProductRepository;

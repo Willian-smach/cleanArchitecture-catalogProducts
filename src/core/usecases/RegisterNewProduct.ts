@@ -12,6 +12,16 @@ export default class RegisterNewProduct {
     }
 
     async exec(data: RegisterNewProductDTO) {
+        if(!data.productName) {
+            return this.msg = 'All fields must be filled';
+        }
+        if(!data.description) {
+            return this.msg = 'All fields must be filled';
+        }
+        if(!data.value) {
+            return this.msg = 'All fields must be filled';
+        }
+
         const verifyExistenceProduct = await this.productRepo.findByName(data.productName);
         if(verifyExistenceProduct == true){
             return this.msg = 'The product already exists!!';

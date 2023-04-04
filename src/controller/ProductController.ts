@@ -15,7 +15,7 @@ class ProductController {
     static async registerProducts(params, body) {
         const productRepositoryMongo = new ProductRepositoryMongo();
         const registerProduct = new RegisterNewProduct(productRepositoryMongo);
-        const product = AdapterProduct.create(body);
+        const product = AdapterProduct.create(body.productName, body.description, body.value);
         console.log(product);
         const confirm = await registerProduct.exec(product);
         return confirm;

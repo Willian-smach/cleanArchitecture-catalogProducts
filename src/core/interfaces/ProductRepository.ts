@@ -3,7 +3,7 @@ import { RegisterNewProductDTO } from "../usecases/DTO/RegisterNewProductDTO";
 
 interface ProductRepository {
     register(product: RegisterNewProductDTO) : Promise<boolean>;
-    find(id: string) : Promise<Product>;
+    find(id: string) : Promise<any>;
     findByName(productName: string) : Promise<boolean>;
     findAll() : Promise<any>;
     update(product: Product) : Promise<boolean>; 

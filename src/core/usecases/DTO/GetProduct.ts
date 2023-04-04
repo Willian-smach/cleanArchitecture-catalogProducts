@@ -8,10 +8,10 @@ export class GetProduct {
     }
 
     async exec(id: string) {
-        const product = this.productRepo.find(id);
+        const product = await this.productRepo.find(id);
         if(product){
             return product;
-        }else{
+        }else {
             return {msg: 'Product Not Found!!'};
         }
     }

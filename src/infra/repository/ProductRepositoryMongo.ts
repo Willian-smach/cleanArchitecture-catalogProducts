@@ -5,6 +5,7 @@ import { ProductRepository } from "../../core/interfaces/ProductRepository";
 import { ProductMongo } from "../../models/ProductMongo";
 
 class ProductRepositoryMongo implements ProductRepository {
+
     async register(product: Product): Promise<boolean> {
         const productRegister = new ProductMongo({
             id: product.id,
@@ -17,8 +18,13 @@ class ProductRepositoryMongo implements ProductRepository {
 
         return !!productRegister;
     }
-    async find(id: string): Promise<Product> {
-        return await ProductMongo.findOne({id: id});
+    async find(id: string): Promise<any> {
+        const pMongo = await ProductMongo.findOne({id: id}); 
+        if(pMongo){
+            let product = AdapterProduct.create(pMongo.productName, pMongo.description, pMongo.value, pMongo.id);
+            return product;
+        }
+        return pMongo;
     }
 
     async findByName(productName: string): Promise<boolean> {
@@ -27,7 +33,6 @@ class ProductRepositoryMongo implements ProductRepository {
     }
 
     async findAll(): Promise<any> {
-        //const ProductMongo = AdapterProductMongoose.adapter();
         const products = await ProductMongo.find();
         return products;
     }

@@ -3,7 +3,7 @@ import { AdapterProduct } from "../adapter/AdapterProduct";
 import { GetProduct } from "../core/usecases/GetProduct";
 import { GetAllProducts } from "../core/usecases/GetAllProducts";
 import RegisterNewProduct from "../core/usecases/RegisterNewProduct";
-import { ProductRepositoryMongo } from "../infra/repository/ProductRepositoryMongo";
+import { ProductRepositoryMongo } from "../infra/repository/product/ProductRepositoryMongo";
 import { UpdateProduct } from "../core/usecases/UpdateProduct";
 import { DeleteProduct } from "../core/usecases/DeleteProduct";
 

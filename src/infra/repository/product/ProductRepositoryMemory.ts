@@ -1,7 +1,10 @@
-import { Product } from "../../core/entities/Product";
-import { ProductRepository } from "../../core/interfaces/ProductRepository";
+import { Product } from "../../../core/entities/Product";
+import { ProductRepository } from "../../../core/interfaces/ProductRepository";
 
 class ProductRepositoryMemory implements ProductRepository {
+    findByName(productName: string): Promise<boolean> {
+        throw new Error("Method not implemented.");
+    }
 
     products: Product[] = [];
 
@@ -13,7 +16,7 @@ class ProductRepositoryMemory implements ProductRepository {
             value: product.value
         }
 
-        this.products.push(data);
+        //this.products.push(data);
         return !!data;
     }
     

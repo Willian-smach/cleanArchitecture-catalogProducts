@@ -1,8 +1,8 @@
-import { AdapterProduct } from "../../adapter/AdapterProduct";
-import { AdapterProductMongoose } from "../../adapter/AdapterProductMongoose";
-import { Product } from "../../core/entities/Product";
-import { ProductRepository } from "../../core/interfaces/ProductRepository";
-import { ProductMongo } from "../../models/ProductMongo";
+import { AdapterProduct } from "../../../adapter/AdapterProduct";
+import { AdapterProductMongoose } from "../../../adapter/AdapterProductMongoose";
+import { Product } from "../../../core/entities/Product";
+import { ProductRepository } from "../../../core/interfaces/ProductRepository";
+import { ProductMongo } from "../../../models/ProductMongo";
 
 class ProductRepositoryMongo implements ProductRepository {
 

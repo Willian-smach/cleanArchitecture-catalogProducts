@@ -2,7 +2,7 @@ import { Establishment } from "../../../core/entities/Establishment";
 import { EstablishmentRepository } from "../../../core/interfaces/EstablishmentRepository";
 
 class EstablishmentRepositoryMongo implements EstablishmentRepository {
-    registerUser(establishment: Establishment): Promise<boolean> {
+    registerEstablishment(establishment: Establishment): Promise<boolean> {
         throw new Error("Method not implemented.");
     }
     findEstablishment(id: string): Promise<Establishment> {
